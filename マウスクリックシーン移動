@@ -1,0 +1,24 @@
+using UnityEngine;
+using UnityEngine.SceneManagement;
+
+public class StartButtonScript : MonoBehaviour
+{
+    void Update()
+    {
+        if (Input.GetMouseButtonDown(0))
+        {
+            //左クリックを受け付ける
+            SceneManager.LoadScene("MainScene");
+        }
+        if (Input.GetMouseButtonDown(1))
+        {
+            //右クリックを受け付ける
+            Debug.Log("マウスの左ボタンをクリックしてください");
+        }
+        if (Input.GetMouseButtonDown(2))
+        {
+            //ミドルクリックを受け付ける
+            Debug.Log("マウスの左ボタンをクリックしてください");
+        }
+    }
+}   
