@@ -1,0 +1,54 @@
+・得ようとつする側のスクリプト
+
+public class NewBehaviourScript : MonoBehaviour
+{
+
+    // Update is called once per frame
+    void Update()
+    {
+
+        if (Input.GetKey(KeyCode.Space))
+        {
+            GetComponent<Rigidbody>().AddForce(0, 0, 5.0f, ForceMode.Impulse);
+        }
+    }
+
+
+
+
+    //ゲームオブジェクト動詞が接触したタイミングで実行
+    void OnCollisionEnter(Collision collision)
+    {
+        // もし衝突した相手オブジェクトの名前が"Cube"ならば
+        if (collision.gameObject.name == "Cube")
+        {
+            // 衝突した相手オブジェクトを削除する
+            Destroy(collision.gameObject);
+        }
+    }
+
+
+
+    // ゲームオブジェクト同士が接触している間、持続的に実行
+    void OnCollisionStay(Collision collision)
+    {
+        // もし接触している相手オブジェクトの名前が"Plane"ならば
+        if (collision.gameObject.name == "Plane")
+        {
+            // このオブジェクトのRendererコンポーネントのmaterialの色をランダムに変更する
+            // new Color(赤：0~1, 青：0~1, 緑：0~1, 透明度：0~1);
+            GetComponent<Renderer>().material.color = new Color(Random.value, Random.value, Random.value, 1.0f);
+        }
+    }
+
+    // ゲームオブジェクト同士が接触から離れたタイミングで実行
+    void OnCollisionExit(Collision collision)
+    {
+        // もし接触から離れた相手オブジェクトの名前が"Plane"ならば
+        if (collision.gameObject.name == "Plane")
+        {
+            // このオブジェクトのRendererコンポーネントのmaterialの色を白に変更する
+            GetComponent<Renderer>().material.color = Color.white;
+        }
+    }
+}
