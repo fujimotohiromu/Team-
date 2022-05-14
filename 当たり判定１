@@ -1,4 +1,4 @@
-・得ようとつする側のスクリプト
+・衝突する側のスクリプト
 
 public class NewBehaviourScript : MonoBehaviour
 {
